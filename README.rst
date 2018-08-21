@@ -7,7 +7,7 @@ Install for development
 
 1. Clone from the repository::
 
-    git clone git@github.com:biolab/scorange-web.git
+    git clone git@github.com:nejc121/sc-flask.git
 
    You can also use SSH-based URLs or URLs of your forks.
 

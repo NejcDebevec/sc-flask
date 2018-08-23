@@ -26,7 +26,7 @@ def send_mail():
     msg = Message(subject, sender=address, recipients=['info@biolab.si'])
     msg.body = content
     mail.send(msg)
-    return redirect("http://singlecell.biolab.si/contact/")
+    return redirect("https://singlecell.biolab.si/contact/")
 
 
 @app.route('/install/', methods=['GET'])

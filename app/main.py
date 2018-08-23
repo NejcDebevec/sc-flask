@@ -1,13 +1,32 @@
 from flask import Flask, request, Response, redirect
+from flask_mail import Mail, Message
+from flask_cors import CORS
 import requests
 
 
 app = Flask(__name__)
-
+app.config['MAIL_SERVER'] = 'mail.fri.uni-lj.si'
+app.config['MAIL_PORT'] = 25
+app.config['MAIL_USERNAME'] = ''
+app.config['MAIL_PASSWORD'] = ''
+app.config['MAIL_USE_TLS'] = False
+mail = Mail(app)
+CORS(app)
 
 @app.route('/')
 def hello_world():
     return 'Hello World!'
+
+
+@app.route("/mail/", methods=["POST"])
+def send_mail():
+    address = request.form.get('E-mail')
+    subject = request.form.get('Subject')
+    content = request.form.get('Message')
+    msg = Message(subject, sender=address, recipients=['info@biolab.si'])
+    msg.body = content
+    mail.send(msg)
+    return redirect("http://singlecell.biolab.si/contact/")
 
 
 @app.route('/install/', methods=['GET'])

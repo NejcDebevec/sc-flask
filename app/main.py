@@ -48,7 +48,22 @@ def download():
 
     return redirect(url)
 
-
+@app.route("/contribute/", methods=["POST"])
+def contribute():
+    full_name = request.form.get('Full Name')
+    email = request.form.get('E-mail')
+    address = request.form.get('Address')
+    country = request.form.get('Country')
+    tel_number = request.form.get('Number')
+    signature = request.form.get('Signature')
+    subject = "Contributing to scOrange"
+    content = "Full name: "+full_name+"\nAddress: "+address+"\nCountry: "+country+"\nTelephone number: "+ \
+              tel_number+"\n" + "Signature: " + signature
+    msg = Message(subject, sender=email, recipients=['andrej.copar@fri.uni-lj.si'])
+    msg.body = content
+    mail.send(msg)
+    return redirect("http://singlecell.biolab.si/contributing/")
+    
 if __name__ == "__main__":
     # Only for debugging while developing
     app.run(host='0.0.0.0', debug=True, port=5000)

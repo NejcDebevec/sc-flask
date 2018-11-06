@@ -23,7 +23,7 @@ def send_mail():
     address = request.form.get('E-mail')
     subject = request.form.get('Subject')
     content = request.form.get('Message')
-    msg = Message(subject, sender=address, recipients=['info@biolab.si'])
+    msg = Message(subject, sender=address, recipients=['ajda.pretnar@fri.uni-lj.si'])
     msg.body = content
     mail.send(msg)
     return redirect("https://singlecell.biolab.si/contact/")
@@ -59,7 +59,7 @@ def contribute():
     subject = "Contributing to scOrange"
     content = "Full name: "+full_name+"\nAddress: "+address+"\nCountry: "+country+"\nTelephone number: "+ \
               tel_number+"\n" + "Signature: " + signature
-    msg = Message(subject, sender=email, recipients=['andrej.copar@fri.uni-lj.si'])
+    msg = Message(subject, sender=email, recipients=['ajda.pretnar@fri.uni-lj.si'])
     msg.body = content
     mail.send(msg)
     return redirect("http://singlecell.biolab.si/contributing/")

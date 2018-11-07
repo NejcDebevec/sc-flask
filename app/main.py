@@ -40,10 +40,10 @@ def download():
         os = key.split("'")[1]
         versions[os] = value.strip("\'")
     if os_download == 'mac':
-        url = "https://download.biolab.si/download/files"
+        url = "https://download.biolab.si/download/files/"
         url += versions['MACOS_SCORANGE_BUNDLE']
     elif os_download == 'windows':
-        url = "https://download.biolab.si/download/files"
+        url = "https://download.biolab.si/download/files/"
         url += versions['WIN64_SCORANGE_MINICONDA']
 
     return redirect(url)

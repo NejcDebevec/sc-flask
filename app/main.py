@@ -33,18 +33,18 @@ def send_mail():
 def download():
     os_download = request.args.get('os')
     url = ""
-    r = requests.get("https://singlecell.biolab.si/download/files/filenames.set")
+    r = requests.get("https://download.biolab.si/download/files/filenames.set")
     versions = {}
     for line in r.iter_lines():
         key, value = str(line).split('=')
         os = key.split("'")[1]
         versions[os] = value.strip("\'")
     if os_download == 'mac':
-        url = "https://singlecell.biolab.si/download/files/"
-        url += versions['MACOS_BUNDLE']
+        url = "https://download.biolab.si/download/files"
+        url += versions['MACOS_SCORANGE_BUNDLE']
     elif os_download == 'windows':
-        url = "https://singlecell.biolab.si/download/files/"
-        url += versions['WIN64_STANDALONE']
+        url = "https://download.biolab.si/download/files"
+        url += versions['WIN64_SCORANGE_MINICONDA']
 
     return redirect(url)
 
